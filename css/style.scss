@@ -11,10 +11,19 @@ html {
 h1 {
   text-align: center;
   background-color: #f0b976;
+  animation: h1Color 5s infinite;
 }
 
-img {
-  width: 150px;
+@keyframes h1Color {
+  0% {
+    color: #00cc99;
+  }
+  50% {
+    color: #5c4cb9;
+  }
+  100% {
+    color: #00cc99;
+  }
 }
 
 body {
@@ -34,7 +43,11 @@ body {
 
 input {
   margin: 10px;
+  padding: 5px;
+  width: 120px;
+  height: 20px;
   border-radius: 5px;
+  border: 3px solid #f0b976;
 }
 .midDiv {
   display: flex;
@@ -64,4 +77,41 @@ input {
 }
 td {
   width: 50%;
+}
+
+.submitButton {
+  margin-top: 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #f0b976;
+  background: none;
+  padding: 5px 30px;
+  margin: 20px;
+  border: 3px solid #f0b976;
+  position: relative;
+}
+
+.submitButton::before,
+.submitButton::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: inherit;
+  transition: all 0.8s;
+}
+.submitButton::before {
+  top: -15px;
+  left: -15px;
+  border-width: 3px 0 0 3px;
+}
+.submitButton::after {
+  bottom: -15px;
+  right: -15px;
+  border-width: 0 3px 3px 0;
+}
+.submitButton:hover::before,
+.submitButton:hover::after {
+  width: calc(100% + 27px);
+  height: calc(100% + 27px);
 }

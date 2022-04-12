@@ -1,6 +1,8 @@
-let sum = 0,
-  cnt = 0;
+let sum = 0;
+let cnt = 0;
+
 function addToTable() {
+  let isValid = true;
   let name = document.getElementById("Name");
   let score = document.getElementById("Score");
 
@@ -15,7 +17,15 @@ function addToTable() {
   let nameLabel = document.createElement("label");
   let scoreLabel = document.createElement("label");
 
-  if (name.value != "" && score.value != "") {
+  if (!/^[a-zA-Z]+$/.test(name.value) || name.value.length < 3) {
+    isValid = false;
+    alert("Short Name or not Valid");
+  }
+  if (!/^[0-9]+$/.test(score.value) || score.value > 100 || score.value < 0) {
+    isValid = false;
+    alert("Invalid Score");
+  }
+  if (name.value != "" && score.value != "" && isValid) {
     cnt++;
     sum += Number.parseInt(score.value);
     nameLabel.textContent = name.value;
@@ -39,5 +49,5 @@ function addToTable() {
 
     name.value = "";
     score.value = "";
-  } else alert("missing value");
+  }
 }
